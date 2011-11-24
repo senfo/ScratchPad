@@ -20,13 +20,13 @@ int main(void)
 
   /* Initialize the random number generator */
   srand(iseed);
+  initializeDoors(doors);
 
   printf("Non-Swap Results\n");
 
   /* Determine percentage without swapping doors */
   for (x = 0; x < NUM_RUNS; x++)
   {
-    initializeDoors(doors);
     chosenDoor = rand() % NUM_DOORS;
     revealedDoor = revealDoor(chosenDoor, doors);
 
@@ -44,7 +44,6 @@ int main(void)
   /* Determine percentage after swapping doors */
   for (x = 0; x < NUM_RUNS; x++)
   {
-    initializeDoors(doors);
     chosenDoor = rand() % NUM_DOORS;
     revealedDoor = revealDoor(chosenDoor, doors);
     chosenDoor = swapDoors(chosenDoor, revealedDoor, doors);
