@@ -51,8 +51,8 @@ int main(void)
     report(chosenDoor, revealedDoor, doors);
   }
 
-   printf("Swap Win Average - %.2f\n", (double)swapCount / NUM_RUNS);
-   printf("Non-Swap Win Average - %.2f\n", (double)nonSwapCount / NUM_RUNS);
+   printf("Swap Win Average - %.0f%%\n", ((double)swapCount / NUM_RUNS) * 100);
+   printf("Non-Swap Win Average - %.0f%%\n", ((double)nonSwapCount / NUM_RUNS) * 100);
 
   return 0;
 }
