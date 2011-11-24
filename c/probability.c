@@ -18,13 +18,15 @@ int main(void)
   int doors[NUM_DOORS];
   unsigned int iseed = (unsigned int)time(NULL);
 
-  /* Initialize everything */
+  /* Initialize the random number generator */
   srand(iseed);
-  initializeDoors(doors);
+
+  printf("Non-Swap Results\n");
 
   /* Determine percentage without swapping doors */
   for (x = 0; x < NUM_RUNS; x++)
   {
+    initializeDoors(doors);
     chosenDoor = rand() % NUM_DOORS;
     revealedDoor = revealDoor(chosenDoor, doors);
 
@@ -36,9 +38,13 @@ int main(void)
     report(chosenDoor, revealedDoor, doors);
   }
 
+  printf("-----------------------------------------\n");
+  printf("Swap Results\n");
+
   /* Determine percentage after swapping doors */
   for (x = 0; x < NUM_RUNS; x++)
   {
+    initializeDoors(doors);
     chosenDoor = rand() % NUM_DOORS;
     revealedDoor = revealDoor(chosenDoor, doors);
     chosenDoor = swapDoors(chosenDoor, revealedDoor, doors);
@@ -60,6 +66,11 @@ int main(void)
 void initializeDoors(int *doors)
 {
   int x;
+
+  for (x = 0; x < NUM_DOORS; x++)
+  {
+    doors[x] = GOAT;
+  }
 
   /* Assign a car to one of the doors */
   doors[rand() % NUM_DOORS] = CAR;
@@ -99,15 +110,12 @@ int swapDoors(int chosenDoor, int revealedDoor, int *doors)
 
 void report(int chosenDoor, int revealedDoor, int *doors)
 {
-  int winner;
+  int winner = -1;
 
-  for (winner = 0; winner < NUM_DOORS; winner++)
+  do
   {
-    if (doors[winner] == CAR)
-    {
-      break;
-    }
-  }
+    winner++;
+  } while (doors[winner] != CAR);
 
   printf("Chose: %d\tRevealed: %d\tWinning Door: %d%s\n",
     chosenDoor,
