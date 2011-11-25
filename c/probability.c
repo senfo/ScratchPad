@@ -76,14 +76,6 @@ void initializeDoors(int *doors)
 
   /* Assign a car to one of the doors */
   doors[rand() % NUM_DOORS] = CAR;
-
-  for (x = 0; x < NUM_DOORS; x++)
-  {
-    if (doors[x] != CAR)
-    {
-      doors[x] = GOAT;
-    }
-  }
 }
 
 int revealDoor(int chosenDoor, int *doors)
