@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kinect Drag/Drop Demo</title>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        // Load jQuery
+        google.load("jquery", "1.7");
+    </script>
+    <script type='text/javascript' src='code/kinetic-v3.8.1.min.js'></script>
+    <script type='text/javascript'>
+      $(document).ready(function () {
+        var stage = new Kinetic.Stage('container', 500, 500)
+        var layer = new Kinetic.Layer();
+
+        (function() {
+          var box = new Kinetic.Rect({
+                x: 0,
+                y: 0,
+                fill: 'blue',
+                stroke: 'black',
+                strokeWidth: 2,
+                width: 100,
+                height: 50,
+                draggable: true
+          });
+
+          box.on('dragstart', function() {
+           box.moveToTop();
+           layer.draw();
+          });
+
+          box.on('dblclick dbltap', function() {
+            layer.remove(box);
+            layer.draw();
+          });
+
+          box.on('mouseover', function() {
+            document.body.style.cursor = 'pointer';
+          });
+
+          box.on('mouseout', function() {
+            document.body.style.cursor = 'default';
+          });
+
+          layer.add(box);
+        })();
+
+        stage.add(layer);
+      });
+    </script>
+  </head>
+  <body onmousedown='return false;'>
+    <div id="container">
+    </div>
+  </body>
+</html>
