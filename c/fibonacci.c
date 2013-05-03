@@ -14,11 +14,15 @@ int main(void)
 
   for (i = 0; i < INT_MAX; i++)
   {
-    printf("%d, ", next);
+    printf("%d", next);
 
     if (first + previous > 4000000)
     {
       break;
+    }
+    else
+    {
+      printf(", ");
     }
 
     next = first + previous;
@@ -31,6 +35,7 @@ int main(void)
     }
   }
 
+  printf("\n");
   printf("\n");
   printf("%d\n", total);
 
