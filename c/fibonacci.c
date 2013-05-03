@@ -1,3 +1,6 @@
+/* Calculates the sum of all even-valued terms in the Fibonacci sequence */
+/* below four million */
+
 #include <stdio.h>
 #include <limits.h>
 
