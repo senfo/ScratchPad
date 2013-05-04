@@ -23,7 +23,7 @@ int main(void)
   {
     sprintf(buffer, "%d", x * y);
     length = strlen(buffer);
-    reversed = malloc((length + 1)* sizeof(char));
+    reversed = malloc((length + 1) * sizeof(char));
     strncpy(reversed, buffer, length);
     reverse(reversed);
 
