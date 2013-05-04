@@ -7,7 +7,7 @@
 #define START 999
 #define FINISH 99
 
-#define max(a, b) (((a) > (b)) ? (a) : (b) )
+#define max(a, b) (((a) > (b)) ? (a) : (b))
 
 void reverse(char *);
 
