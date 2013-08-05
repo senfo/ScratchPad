@@ -10,7 +10,7 @@ int main(void)
   long unsigned int i,
                     largest = 0;
 
-  for (i = 3; i < NUMBER; i += 2)
+  for (i = 3; i < NUMBER; i++)
   {
     if (isPrime(i) && !(NUMBER % i))
     {
