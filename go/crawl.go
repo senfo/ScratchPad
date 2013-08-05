@@ -24,7 +24,7 @@ func main() {
 
     do(func(lang Lang) {
       n++ // Keep track of the number of go routines we're running for synchronizing threads
-      go count(lang.Name, lang.URL, c) // Go makes this run concurrently
+      go count(lang.Name, lang.URL, c) // Starts another go routine (runs concurrently)
     })
 
     timeout := time.After(10 * time.Second)
