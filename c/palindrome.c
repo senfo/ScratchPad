@@ -45,7 +45,7 @@ int main(void)
 
 void reverse(char *s)
 {
-  int length = strlen(s) ;
+  int length = strlen(s);
   int c, i, j;
 
   for (i = 0, j = length - 1; i < j; i++, j--)
