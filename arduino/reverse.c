@@ -3,9 +3,9 @@
     reverse sensor on a vehicle.
 */
 
-#define TRIG 4
-#define ECHO 5
-#define BUZZER 13
+const unsigned short TRIG = 4;
+const unsigned short ECHO = 5;
+const unsigned short BUZZER = 13;
 
 long duration;
 long distance;
