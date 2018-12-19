@@ -9,6 +9,9 @@ LDFLAGS += -L/usr/local/lib
 depth: depth.o
 	$(CC) -o depth depth.o
 
+dynamiclinkedlist: dynamiclinkedlist.o
+	$(CC) -o dynamiclinkedlist dynamiclinkedlist.o
+
 fibonacci: fibonacci.o
 	$(CC) -o fibonacci fibonacci.o
 
@@ -36,7 +39,7 @@ probability: probability.o
 smallest: smallest.o
 	$(CC) -o smallest smallest.o
 	
-all: 3and5 fibonacci fizz_buzz highest json linkedlist palindrome prime probability smallest # Intentionally left off "depth" because it's borked
+all: 3and5 dynamiclinkedlist fibonacci fizz_buzz highest json linkedlist palindrome prime probability smallest # Intentionally left off "depth" because it's borked
 
 clean:
-	@rm *.o 3and5 depth fibonacci fizz_buzz highest json linkedlist palindrome prime probability smallest 2> /dev/null || true
+	@rm *.o 3and5 depth dynamiclinkedlist fibonacci fizz_buzz highest json linkedlist palindrome prime probability smallest 2> /dev/null || true
