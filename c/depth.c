@@ -5,31 +5,48 @@ typedef struct Node {
   struct Node *right;
 } Node;
 
-int depth(struct Node *n);
+int maxDepth(Node);
 
 int main(void)
 {
-  struct Node n = {{NULL, NULL}, NULL};
-  int d = depth(&n);
+  int depth;
+  Node root;
+  Node a, b, c;
+  
+  c.left = NULL;
+  c.right = NULL;
+  
+  b.left = &c;
+  b.right = NULL;
+  
+  a.left = NULL;
+  a.right = &b;
+  
+  root.left = NULL;
+  root.right = &a;
 
-  printf("%d\n", d);
+  depth = maxDepth(root);
+  printf("%d\n", depth);
 
   return 0;
 }
 
-int depth(struct Node *n)
+int maxDepth(Node node)
 {
-  int x = 1;
+  int left = 0;
+  int right = 0;
 
-  if (n->left != NULL)
+  if (node.left != NULL)
   {
-    x += depth(n->left);
+    left++;
+    left += maxDepth(*node.left);
   }
 
-  if (n->right != NULL)
+  if (node.right != NULL)
   {
-    x += depth(n->right);
+    right++;
+    right += maxDepth(*node.right);
   }
 
-  return x;
+  return left > right ? left : right;
 }
