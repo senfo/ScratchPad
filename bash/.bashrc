@@ -21,3 +21,9 @@ shrug() {
 facepalm() {
     echo "(－‸ლ)"
 }
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
