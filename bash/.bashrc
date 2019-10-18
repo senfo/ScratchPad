@@ -6,21 +6,10 @@ if [ -f /etc/bashrc ]; then
 fi
 
 # User specific aliases and functions
-tableflip() {
-    echo "(╯°□°)╯︵ ┻━┻"
-}
-
-tableback() {
-    echo "┬─┬﻿ ノ( ゜-゜ノ)"
-}
-
-shrug() {
-    echo "¯\_(ツ)_/¯"
-}
-
-facepalm() {
-    echo "(－‸ლ)"
-}
+alias tableflip="echo '(╯°□°)╯︵ ┻━┻'"
+alias tableback="echo '┬─┬﻿ ノ( ゜-゜ノ)'"
+alias shrug="echo '¯\_(ツ)_/¯'"
+alias facepalm="echo '(－‸ლ)'"
 
 alias ..="cd .."
 alias ...="cd ../.."
