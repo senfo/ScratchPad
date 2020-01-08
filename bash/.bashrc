@@ -8,6 +8,7 @@ fi
 # User specific aliases and functions
 alias tableflip="echo '(╯°□°)╯︵ ┻━┻'"
 alias tableback="echo '┬─┬﻿ ノ( ゜-゜ノ)'"
+alias bearflip="echo 'ʕノ•ᴥ•ʔノ ︵ ┻━┻'"
 alias shrug="echo '¯\_(ツ)_/¯'"
 alias facepalm="echo '(－‸ლ)'"
 
