@@ -5,6 +5,11 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
+# BASH Prompt
+GREEN="\[$(tput setaf 2)\]"
+RESET="\[$(tput sgr0)\]"
+PS1="${GREEN}\u@\h:\w$ ${RESET}"
+
 # User specific aliases and functions
 alias tableflip="echo '(╯°□°)╯︵ ┻━┻'"
 alias tableback="echo '┬─┬﻿ ノ( ゜-゜ノ)'"
