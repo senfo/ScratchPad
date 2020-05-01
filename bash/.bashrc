@@ -8,7 +8,7 @@ fi
 # BASH Prompt
 GREEN="\[$(tput setaf 2)\]"
 RESET="\[$(tput sgr0)\]"
-PS1="${GREEN}\u@\h:\w$ ${RESET}"
+PS1="${GREEN}[\u@\h \W]\$ ${RESET}"
 
 # User specific aliases and functions
 alias tableflip="echo '(╯°□°)╯︵ ┻━┻'"
