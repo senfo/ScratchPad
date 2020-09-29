@@ -1,80 +1,66 @@
-/*
- * Implmentation of a simple program to demonstrate how we could use
- * the Linux inotify subsystem for monitoring a dropbox
-*/
-
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/inotify.h>
 #include <unistd.h>
+#include <argp.h>
+#include <sys/inotify.h>
 
 #define EVENT_SIZE (sizeof (struct inotify_event))
-#define BUFFER_LEN (1024 * (EVENT_SIZE + 16))
+#define BUFF_LEN (1024 * (EVENT_SIZE + 16))
 
 int main(int argc, char **argv)
 {
-    int x = 0;
-    int inotifyFileDescriptor = inotify_init();
-    int watchDescriptor;
-    char *path;
-    char buffer[BUFFER_LEN];
-    ssize_t length;
+    int fd;
+    int watch;
+    int length;
     struct inotify_event *event;
+    char buffer[BUFF_LEN];
+    char *path = argv[1];
+    char *buffer_pointer;
 
-    if (argc < 2)
+    if (argc != 2)
     {
-        printf("Syntax: %s <path>\n", argv[0]);
-	exit(EXIT_FAILURE);
+        printf("Usage: %s [directory]\n", argv[0]);
+        exit(EXIT_FAILURE);
     }
 
-    path = argv[1];
+    printf("Watching %s for contacts.\n", path);
 
-    if (inotifyFileDescriptor < 0)
-    {
-        perror("Error initializing inotify");
-	exit(EXIT_FAILURE);
-    }
-
-    watchDescriptor = inotify_add_watch(inotifyFileDescriptor, path, IN_CREATE | IN_MODIFY | IN_DELETE);
+    fd = inotify_init();
+    watch = inotify_add_watch(fd, path, IN_CREATE | IN_MODIFY | IN_DELETE);
 
     while (1)
     {
-        length = read(inotifyFileDescriptor, buffer, BUFFER_LEN);
+        length = read(fd, buffer, BUFF_LEN);
 
         if (length < 0)
         {
-            perror("Error reading inotify file descriptor into buffer");
+            fprintf(stderr, "Error reading into file descriptor\n");
+            exit(EXIT_FAILURE);
         }
 
-        while (x < length)
+        for (buffer_pointer = buffer; buffer_pointer < buffer + length; )
         {
-            event = (struct inotify_event *)&buffer[x];
+            event = (struct inotify_event *) buffer_pointer;
 
             if (event->mask & IN_CREATE)
             {
-                 printf("File named '%s' created.\n", event->name);
+                printf("%s created\n", event->name);
             }
             else if (event->mask & IN_MODIFY)
             {
-                printf("File named '%s' modified.\n", event->name);
+                printf("%s modified\n", event->name);
             }
             else if (event->mask & IN_DELETE)
             {
-                printf("File named '%s' deleted.\n", event->name);
-            }
-            else
-            {
-                fprintf(stderr, "Catching event we didn't listen for: %d.\n", event->mask);
+                printf("%s deleted\n", event->name);
             }
 
-            x += EVENT_SIZE + event->len;
+            buffer_pointer += sizeof (struct inotify_event) + event->len;
         }
-
-	x = 0;
     }
 
-    inotify_rm_watch(inotifyFileDescriptor, watchDescriptor);
-    close(inotifyFileDescriptor);
+    inotify_rm_watch(fd, watch);
+    close(fd);
 
-    return 0;
+    return EXIT_SUCCESS;
 }

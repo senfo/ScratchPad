@@ -38,8 +38,11 @@ probability: probability.o
 
 smallest: smallest.o
 	$(CC) -o smallest smallest.o
+
+watcher: watcher.o
+	 $(CC) -o watcher watcher.o
 	
-all: 3and5 depth dynamiclinkedlist fibonacci fizz_buzz highest json linkedlist palindrome prime probability smallest
+all: 3and5 depth dynamiclinkedlist fibonacci fizz_buzz highest json linkedlist palindrome prime probability smallest watcher
 
 clean:
 	@rm *.o 3and5 depth dynamiclinkedlist fibonacci fizz_buzz highest json linkedlist palindrome prime probability smallest 2> /dev/null || true
