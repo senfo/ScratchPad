@@ -1,7 +1,7 @@
 #!/bin/bash
 
 declare -a parameters=()
-declare -A flags=( ["u"]="RGT user name" ["p"]="RGT user password" ["r"]="Role" ["U"]="Postgres user" ["P"]="Postgres password" ["H"]="Postgres host" )
+declare -A flags=( ["u"]="User name" ["p"]="User password" ["r"]="Role" ["U"]="Postgres user" ["P"]="Postgres password" ["H"]="Postgres host" )
 
 usage () {
     for flag in "${!flags[@]}"; do
