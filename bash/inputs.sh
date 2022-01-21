@@ -23,7 +23,7 @@ done
 # Add a parameter to handle help
 parameters+=(\?)
 
-# Join the parameters array, seperating by comma
+# Join the parameters array, seperating by colon
 options=$(IFS=: ; echo "${parameters[*]}")
 #echo $options
 
