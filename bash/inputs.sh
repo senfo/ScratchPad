@@ -1,7 +1,7 @@
 #!/bin/bash
 
 declare -a parameters=()
-declare -A flags=( ["u"]="User name" ["p"]="User password" ["r"]="Role" ["U"]="Postgres user" ["P"]="Postgres password" ["H"]="Postgres host" )
+declare -A flags=( ["u"]="User name" ["p"]="User password" ["r"]="Role" )
 
 usage () {
     for flag in "${!flags[@]}"; do
@@ -9,7 +9,7 @@ usage () {
     done
 }
 
-# Why did I do this?
+# Loops through each of the items in the hash and echos them
 show () {
     for parameter in ${!parameters[@]}; do
         echo ${parameters[$parameter]}
