@@ -24,3 +24,4 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+alias fuck='sudo $(fc -ln -1)'
