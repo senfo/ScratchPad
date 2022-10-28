@@ -27,7 +27,6 @@ alias ......="cd ../../../../.."
 alias fuck='sudo $(fc -ln -1)'
 
 # Kubernetes
-# User specific aliases and functions
 function evict() {
     microk8s kubectl get pods -n "$1" | grep Evicted | awk '{print $1}' | xargs microk8s kubectl delete pod -n "$1"
 }
