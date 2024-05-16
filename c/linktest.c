@@ -22,7 +22,7 @@ int main(void)
     c.value = 3;
     c.next = &a;
 
-    printf("Is circular? %s\n", hasCycle(&a) == 0 ? "No" : "Yes");
+    printf("Is circular? %s\n", hasCycle(&a) ? "Yes" : "No");
     
     return 0;
 }
