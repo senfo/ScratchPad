@@ -27,6 +27,9 @@ json: json.o cJSON.o
 linkedlist: linkedlist.o
 	$(CC) -o linkedlist linkedlist.o
 
+linktest: linktest.o
+	$(CC) -o linktest linktest.o
+
 palindrome: palindrome.o
 	$(CC) -o palindrome palindrome.o
 
@@ -42,7 +45,7 @@ smallest: smallest.o
 watcher: watcher.o
 	 $(CC) -o watcher watcher.o
 	
-all: 3and5 depth dynamiclinkedlist fibonacci fizz_buzz highest json linkedlist palindrome prime probability smallest watcher
+all: 3and5 depth dynamiclinkedlist fibonacci fizz_buzz highest json linkedlist linktest palindrome prime probability smallest watcher
 
 clean:
-	@rm *.o 3and5 depth dynamiclinkedlist fibonacci fizz_buzz highest json linkedlist palindrome prime probability smallest 2> /dev/null || true
+	@rm *.o 3and5 depth dynamiclinkedlist fibonacci fizz_buzz highest json linkedlist linktest palindrome prime probability smallest 2> /dev/null || true
