@@ -38,3 +38,8 @@ function cleanErrors() {
 function cleanCompleted() {
     microk8s kubectl get pods -n "$1" | grep Completed | awk '{print $1}' | xargs microk8s kubectl delete pod -n "$1"
 }
+
+# Prints the function declarations and any parameters for a C function for the given filename
+function printFunctions() {
+    grep -oP '^\s*\w+\s+\**\w+\s*\([^;{]*\)' "$1"
+}
