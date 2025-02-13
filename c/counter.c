@@ -21,7 +21,7 @@ int main(void)
 
 size_t countBits(const unsigned int value)
 {
-    unsigned int bits = 1 << ((sizeof (value) * 8) - 1);
+    unsigned int bits = 1 << ((sizeof (value) * CHAR_BIT) - 1);
     unsigned int count = 0;
 
     while (bits) {
