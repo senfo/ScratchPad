@@ -38,3 +38,13 @@ function cleanErrors() {
 function cleanCompleted() {
     microk8s kubectl get pods -n "$1" | grep Completed | awk '{print $1}' | xargs microk8s kubectl delete pod -n "$1"
 }
+
+# SSH (be aware of security implications)
+function ssh-init() {
+    eval "$(ssh-agent -s)"
+    ssh-add -t 1800 ~/.ssh/id_ed25519 # 30 minute timeout. Socket details stored in $SSH_AUTH_SOCK.
+}
+
+function ssh-clear() {
+    ssh-add -D
+}
