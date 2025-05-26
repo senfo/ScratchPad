@@ -9,7 +9,7 @@ typedef struct Node {
 
 void display(Node *);
 void freeList(Node *);
-void push(Node **, int);
+short push(Node **, int);
 Node *reverse(Node *);
 
 int main(void)
@@ -24,7 +24,12 @@ int main(void)
     // Generate some random data for our linked list
     for (x = 0; x < 10; x++)
     {
-        push(&node, rand() % 100);
+        if (push(&node, rand() % 100) < 0)
+        {
+          fprintf(stderr, "Possible error allocating memory for Node.\n");
+
+          exit(EXIT_FAILURE);
+        }
     }
     
     // List should be displayed forward or we're borked
@@ -64,12 +69,17 @@ void freeList(Node *head)
     free(head);
 }
 
-void push(Node **head, int value)
+short push(Node **head, int value)
 {
-    Node *newNode = malloc(sizeof (Node));
     Node *node = (*head);
     Node *prev;
     Node *current;
+    Node *newNode = malloc(sizeof (Node));
+
+    if (newNode == NULL)
+    {
+        return -1;
+    }
 
     newNode->value = value;
     newNode->next = NULL;
@@ -92,6 +102,8 @@ void push(Node **head, int value)
 
         prev->next = newNode;
     }
+
+    return 0;
 }
 
 Node *reverse(Node *node)
